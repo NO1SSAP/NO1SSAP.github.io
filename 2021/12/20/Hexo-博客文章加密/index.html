@@ -1,253 +1,250 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=light>
-
-
-
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo.svg">
-  <link rel="icon" href="/img/logo.svg">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Passion">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="密码是 helloworld">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Hexo-博客文章加密">
-<meta property="og:url" content="https://pass1on.fun/2021/12/20/Hexo-%E5%8D%9A%E5%AE%A2%E6%96%87%E7%AB%A0%E5%8A%A0%E5%AF%86/index.html">
-<meta property="og:site_name" content="Passion&#39;s Blog">
-<meta property="og:description" content="密码是 helloworld">
-<meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://pass1on.fun/img/Encrypt.jpeg">
-<meta property="article:published_time" content="2021-12-20T12:33:05.000Z">
-<meta property="article:modified_time" content="2022-01-05T10:20:08.792Z">
-<meta property="article:author" content="Passion">
-<meta property="article:tag" content="Hexo">
-<meta property="article:tag" content="博客搭建">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://pass1on.fun/img/Encrypt.jpeg">
-  
-  
-  <title>Hexo-博客文章加密 - Passion&#39;s Blog</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
-
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
-
-  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="shadysen">
     
+    <title>
+        
+            Hexo-博客文章加密 |
+        
+        Passion&#39;s Blog
+    </title>
     
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
-  
+<link rel="stylesheet" href="/css/style.css">
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"pass1on.fun","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/load.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    <link rel="shortcut icon" href="/img/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"pass1on.fun","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/img/avatar.svg","favicon":"/img/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
 <meta name="generator" content="Hexo 5.4.1">
 <style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
 <link rel="alternate" href="/atom.xml" title="Passion's Blog" type="application/atom+xml">
-<link rel="stylesheet" href="/css/prism.css" type="text/css"></head>
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><script src="/js/prism.js"></script></head>
 
 
+<script src="https://g.joyinshare.com/hc/ribbon.min.js" type="text/javascript"></script>
 <body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Passion&#39;s Blog</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/preview.jpg') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Hexo-博客文章加密">
-              
-            </span>
-
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-12-20 20:33" pubdate>
-        2021年12月20日 晚上
-      </time>
-    </span>
-  
-</div>
-
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      348 字
-    </span>
-  
-
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      3 分钟
-    </span>
-  
-
-  
-  
-</div>
-
-            
-          </div>
-
-          
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <main>
+<div class="progress-bar-container">
     
-      
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Hexo-博客文章加密</h1>
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
             
-            <div class="markdown-body">
-              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
-  <script id="hbeData" type="hbeData" data-hmacdigest="f1a374f62129b030b4c0523fea5871ea30c441365ae111de2e3eda97099a549f">90b802059200f1da98db072b6ecfd0773c36ace9dbc40f29f373934aed324c15327362b5fcd32884642c32acf991b2727a2a919f1266872d12f60bb602f6c75e3200c158761dff40d4b5c5b2ee60b3aade14027992018d0904d28c602a34b9008755323b6e6f2e03999640a4c40e6a02c1a904a47d1c0a381100e5d74199c74aa48ea7953e9ea0e9df5b5fc6b712a897c98693a1a5afb9345cd703e908a9005eae91a358da93abb1aea81a19a07eeafdf909cf25a837c4795c380cb4c7214971365fc03be0826e9e07826063ff6bd693e1d109b536aec885b6d991f68602522ffe45e580549f5ef7c47708b670425541bfb86bf797c5995cf391f9cccc5a3381e2fd12723268790461f4719fda9f30807e417ae213d7cdd575380b2cd497df2b02c2ff83c043dab30444d5676e61eef9da824d853410852e4a794e6b4c019eee299c65f7d6c225a1d5ab552f4039628f7a6c950913f40a2fc18a0d973491cb459a9c6566c162695851e2d5fa3f13d7796b65dbe619cf3c6bd87078813dee233f781e4d6d4bb77ce8b6caccc4190ccb0eb4c9cfadb8ba69c754dd9969301f4a86b071d10b459881be34be624942fb55d054b6a3ab4325a4d049f8b48b35525518480ea8a7ab487cdff1f3e7ebdee4f29269dcb08f1217f956f1e20fc47dfb9e44f05bfab1d2ab0215b5ea7f0002aa1582f84f8c9339b412c2c0385917a70997aa40e476568140844c40368053276dae4a0ad598ea13adbf81035ff5249789abdbc1ade4e60677af6742346c41914574d1fbca655e2054b1c77c8232b651e274deab64e4e160b51865ab0e0065ad9484eeedb7e3753060eca74dfe58774b420766b4cefc766987cd360f5b3c797c0b31f145d24b016c77d4ca8ef3e682f3a92616078d4250a03a74e76dd7e9a2bd43ae47636ada2929fd3e8cb5d5ec5edc15caf2f44f2316b360b108584648bfb2c25547accd601ca3b4688f0303eda85c2d24dc2e96f3a171ac41b0526c2670a6f832b409c246cf8f43399a4c6e4dcb56d23c5daaebe6d87dbd32526867d2efd157c1115593db418f0c3ff5f89563ee1a12f176038d7625843ccd25bb6ea9cf22f7ac3d2f8bc6204f2c84d17602c4b390163fb5c56fc3516d9abc2f893107354015bc31633fd39ade40f546c401ee81c2cb0d0c1e527a493cbbe5c9e4e3a9387d3c3ac870114aa27ea13773f71a0c01e3ed7c321c4cf729961c6663eb4bcf2482da3eeddc6590e4ae0a4e4e61bb79a0fbbf2b52b1eb9cbc5c3415b70d9d7924f301fbd5afea0d87a2aa31f68b9d2e328333526bf077811a524061bca550c045b9b0bb24d847ab678d559b968419523cb1c91d53712699abe9558edb88525e64ecb2ab0dd336c9da671c8935f004802af3207d55887172873e9d68620c213e1cd7aea02e18a314a7f52deaffbf574e2ecbcb632a3c9353085193634de9349cd7289b5c9f2e17a0731a91bec33458a950f55c9f3656fa69038e19ecf9ad021e6809b4fc46ceeb55d6b60e1cc2767985904ad13b0f32ef0425f8c79dea0dcec830002a4a5f3f88c26c488e1db256c291fe3fad936f7d2c50d12cc4211bce1c058cbaa59b1a7dc849c55ae8c0b95eb95a9d3a21fe19b17035b97b97aa2b9389b94f9a835463ed22bafc9e65faf5a189bd6b5bc46e6b2041dd7526ffb48c11627d76f804aea5b0936742919f5041bdfdba5e6535748e72a97dd926ec140af3e21a5d90ee523e1e485fb9aa294818dd0202c73bfe185494c03bd32f204ebe76ab8faad16bcbeffda69575f210664ed589db42817008604e604bf2789bc067eb790ad72d2f2b8df928a2e4f133d4ef2a5e2b37581b568f6cced0b84d3db42f168e806d1585846380c994e8c47dceee6625ce80d8b3f8d8c04c271dea9d2809c554dfd4af27490fcb18133c2ad523abeb2a6125d9480be865333bdc322b2a3a7ffe7353cf36d5541c43d19c05d8f453cd8be1eb03688cbb637fd4d90df0146d8231cbc01931ad9f828aaf5bec0e1146151462a9088c3d4460a225cad583f2635a163b36191e35784b6719904eb7efd3f1b3e53baf7a5a826d3dfa7b1ffb7870732d38a705818383688aa76cf87e008e4f2fa60a3d1d09c3a9d4697e45731a34cba8eb2b4415035f3de23ccdffe9c84ee0441499dd0a6af62dca5f23ec0aea22260bcf51dd69a8f9a1919d24fe766069631242c53094bb02fad2e1c74ee2eb1fd7dda9da67b1302a57cc182f3d4cad314129a6f45e2334f3b86d6babe37d97fe2b6abe37ff6fd1c40f8589c5c5bc36284872909a6c82fa67252f01b29daf34708cbd92c14050b4bf9ffed50559f68395599d6816d16043580cc79827a2b960795ea6062d2fffdebcee7ed8d08fae18139e01c5082c767823f98229f1bb3d7a7d13560c5a6c15a3bb79d67e5e2ed2b6e882a0e8c7a37c593f76929d66cc86eecf0d3977dbe92d68e9a760790f7631733f8175d0b12844eb0e313d9568c255d550774ac04a8ec4a7fddd1bdb5321d47a547bfaf528ebc48f9577022d9c43e478a73f18fe584453955a592dacb4fe7aabfc344f5cb147b99e155ae2e890e745e82b387ca966c758d30c0da8e5fa573a29fed7c773420ec36901b9b5ab4a84bf5cf5fd78cdf281aa6d1df52de18adc4ec9374fd4025cbdce0660703a27442ab11eaea8cc3a6a33c32fd1a1819cb6814355a8d492632b41517dea796e70b04593d5d7907923a56d83a05882b04fad2aa6b24643dc4767b771149cad0a17286c052f7e39f1489587d34bb905b3c80244fc55f4e481a3b60b9951d9adebbca4d254868f06892beb4292761d453c1e053da21cd0ab314b604d2d54a4df8ca55974a24270a85fa31ae07bfa483ced43ba81f30db8aea9bee18a94346c225d3f7a4847b671d4ad6555718d30e5a9c5efc4f9c43a96c0f517d292410e3859767ecb8b7fc9a894ede6331cbbd81ebac703eff6db7b224e95d40731ed816c6fe9d8d7c2d38341d7dd3a0b197d20f1ef278b9c11e636688a27271ae6444aa2aeeb2f87195fb0e0b9b8ef63fdb42ba5544ab80f0b3b62f47057e75738724d66ce30677c0ac97cdb59b84f6b5bc0dec8d5f863e9071068a89bd9bf21db7faa2dcb603a0603db5d08f87659b188f5049cffbebfea513ebe12afaa8b5c082d0d959395d9da61a440ea6d271a5e9e085ff636532ce283cb2dd3e9e912571f4914844ce1ba71ade2f758e87072d589d9f506e80259341e6ab86b3b8382e7f88086df0ec75c02e26c4841d706b3fd40e23ada7286c64e588ceb29bb82137d0ddd0557added09f30e8120cc392a5645675462a91193c0fd70d2edfe0b414378b81013aecdfaa0c6db65671ffe81c09a3b9f96ab7e3ac5ea31b88e0e7318d54e5c53610d6714286637beee3e387028fde502a650e8cb5d0a9558aa39cbde2a6c92d17b2973063a9b6b139c0480997201b33723541e3796ffa02e7820fd61a6d95035b0a83b2d4d5806ad3671163b13726358d250c171d25451496484a46e7974b1975efb7c150fc50f76162a57afdf3ebbc889f23399633e796590d6f80da2a44116347870a3ca07ed12851f83ef8fc3089ca285db3ce25d6ceb8ff7ba19424aa076608c1fff1253ca7c45ffb1df160f52276317a3ab6b576d672ac111181e1556b449373ff8c4be2336258f3944ee0aec4caebdc5ba8641b3a8ba486106e05ed40331d33119dc507d114ebc90e4b10c8e436e79c021baa6bd7c8ff4728d8167159201496688ade035af6eebecf42417829108e890069226906e5d169e678364e5d042070a1b015cad6d83a7a0694c20dd853a375413cdd733de20cd35c2f9fd28fa8c084f8107fb75b1b6d748d1799bd322fb88ccd95392505eeff9be5464c36402c0059e52e31d6017ca32b9620d6ab46a1eee07c6b6b741c48190ce982e6d013f6ea1f6e0aa0f36f08d593671027f956d9591103768aa0186159538cdb9684cd4d40c21e1e0b4623362ecb34c71e4c51888b7083e616dfed43474129423065a343560f1071dc41d3b68cada9b99a9dfd6f38b0cf9e51a9c371ad8eb1fea34fe932532ac542af7e6d3297eff4df5738afc2e594c998ca4ecb89a613b50b99c82409dc0484f0c7076a982cbd358b26f274a8720c30d447c24e37edd70a88dfd11162fdba32651c15b517c0b90460249c7d8c4cc1f05ddce3a07d1e2b2376bcaf14ebb13e9ce9dc7e399eed7869d59412d073ea7299b60fb596b70d3d1835c3426cd66d7b2e38abc6a2a1fd3516e24ada62e44b8ada50a241d2b1e04bcfaf4a64b7cec2837f9f4bcb7fdabf973da8ba4520cc03a3219373caf7f2f3b000f5017f617862</script>
+            <a class="logo-title" href="/">
+                Passion&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Hexo-博客文章加密</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/img/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">shadysen</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2021-12-20 20:33:05</span>
+        <span class="mobile">2021-12-20 20:33</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Hexo/">Hexo</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>5 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>1 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="8f189720edb528b8d9c13cbda8e899593ffe607a2c5a7b21edf5bb61e59e911b">90b802059200f1da98db072b6ecfd0773c36ace9dbc40f29f373934aed324c15327362b5fcd32884642c32acf991b2727a2a919f1266872d12f60bb602f6c75e3200c158761dff40d4b5c5b2ee60b3aade14027992018d0904d28c602a34b9008755323b6e6f2e03999640a4c40e6a02c1a904a47d1c0a381100e5d74199c74aa48ea7953e9ea0e9df5b5fc6b712a897c98693a1a5afb9345cd703e908a9005eae91a358da93abb1aea81a19a07eeafdf909cf25a837c4795c380cb4c7214971365fc03be0826e9e07826063ff6bd693e1d109b536aec885b6d991f68602522ffe45e580549f5ef7c47708b670425541bfb86bf797c5995cf391f9cccc5a3381e2fd12723268790461f4719fda9f30807e417ae213d7cdd575380b2cd497df2b02c2ff83c043dab30444d5676e61eef9da824d853410852e4a794e6b4c019eee299c65f7d6c225a1d5ab552f4039628f7a6c950913f40a2fc18a0d973491cb459a9c6566c162695851e2d5fa3f13d7796b65dbe619cf3c6bd87078813dee233f781e4d6d4bb77ce8b6caccc4190ccb0eb4c9cfadb8ba69c754dd9969301f4a86b071d10b459881be34be624942fb55d054b6a3ab4325a4d049f8b48b35525518480ea8a7ab487cdff1f3e7ebdee4f29269dcb08f1217f956f1e20fc47dfb9e44f05bfab1d2ab0215b5ea7f0002aa1582f84f8c9339b412c2c0385917a70997aa40e476568140844c40368053276dae4a0ad598ea13adbf81035ff5249789abdbc1ade4e60677af6742346c41914574d1fbca655e2054b1c77c8232b651e274deab64e4e160b51865ab0e0065ad9484eeedb7e3753060eca74dfe58774b420766b4cefc766987cd360f5b3c797c0b31f145d24b016c77d4ca8ef3e682f3a92616078d4250a03a74e76dd7e9a2bd43ae47636ada2929fd3e8cb5d5ec5edc15caf2f44f2316b360b108584648bfb2c25547accd601ca3b4688f0303eda85c2d24dc2e96f3a171ac41b0526c2670a6f832b4343e46c2164bfb290f677d1b0438081f9c17cf65dc24c4e94ee87ced1f232c4826c0ba6d347c6e82d7e267da05d8e72011916b9302be7042b9e9e8bce632ef6528fd18ff33cfb43c3b30b83ab58017491a4520b9ef3b39f2f232cc1116334e03ffcec8a8f109b406ffc56cc6d3e5744a9b691d39bf11d9eb64fe2769243ffda2ea8428a384bc6a3cdc8fd6e6f165c386f2765b8aea94e4ae42802bb14d5a6af77f64ec8d6d692e7585b511a55800ea527af9d645d2ceef3461577e60cb17cfa69a201519b173647bab7c577c53b22ac10224c05a3c3fae255d24b5cc7750acf39fd02d1553511ce00b22846abf8b951bf7aa35990132e0c7b218a46cc0af62c0e2edae53d46e84b346d8121b8aa457a1b77d374234f2a376c9c2f5e00592fb323131a8a01aed625ab1a8952eb1de2eeb86e2e4399cc5f1686b5b519b6d16ec39922bea3a220867783c9f7bbe35e98afff84719880df9b55aa85d31da68e9ea3a5440a8fb3ce840147607cd20b4f1d576c0812d49e7c6957b5da0fd8a7240e8be2b2d9c7380e65effa243481811972a5bcd796bcd1bd5dcb6903bca4751296f63a22db5eeb266cd798ad71c5b984a9135dbc019d3f366eb86ce3c5c99db58967fbbb9b347c2b8c6771fb38559abbd4a3392a6868547caf9dde992a45aa6e85234ba2e55553dc199b577ba1b2f96cfb592f4c9cd8f583924591468e62803812555704d3b16bab4991bc8d2fa51d47c8ab8011aac76f693780341bc07b569ee880a6136650597edc59823d29bcb6ee3ae94ccfad91607d4b484b3940f6e054b9dbce6b685425982c16aa2de7c16b3f3fc3cce100e212b6c2a696c57ba587d5920405ae274755039f9fff16f626f0df702a766612ae2e183b020d91d8b12311fdda0360164039fd37283d432e68b433d02084d648696f73cb46c89240a55ad56c4d8548987113a5cc2588388565d69bf976102b9045724598b6c18fe07db807aadcd815f927451a1bf82c73a9e58150ddb3acceb2be9f635455230be2cfcb55e4b9d9abf8f8cb87802006019f2c3d29598c16868a01cb0204f4d5f550e80eb088fc8361740bedb62244c040a9a7164951af4b8b3db28b4bf7b0af11c6863ec4b8b810f28052919b648e796703dded576d89f9e94dc57814cc51d0aa0943b7e9eff9cdde1e8e8835e0f94e0108cfbce6a92a89f2d778cfa003eb070b935abdc2b5fbf030aa7707945822a1cdc44669b35c3ad6a2719a41fb8563c96e8384ff41e9e2bd07cec164dcda14b09b967a42baf88ab24b99ef2bf75eb7fc6cf5e857a5f67f5b0d5c9f1a05abecb112d722e650abb4961d8b8c892d8ff0cf6b6cf5c2c9b151efec5a4621caed707629a90af09927dd57ff13ded31b00e3812da295cbbde4057e271756adedae05e3947fdfc0ef4f4c67b5a7693aa96d53e6e7c67b73890d103240185b31cc18503c26981ebb29ec81f71b35a9b07278a90f1fa440c4740995b0b7ccf4eb89f794315bf0d0cfcf240cc40c842491c4b3ec29af851fb361803ba641bcce24556d9dc52208aa35784bf27a6f80ac64d58990a089a1049d33294bb84570a3fc9f05916b2c405bc77598c74b94ce7c8108921b0951b802114fa96e4bf3225af90f3e7699f2155813b9fb636a4511e3251a1b2b314e16ba8b819bfbb277014521c2df0ed117f0e0ac5f9176f192b91c2d4b5fa76fee096d0b344b96d9b8869c394787e73bc473b4ba6f35bf82d1b72bebd19c99257b49d790095d1686debfc8f3403281e3a9138cd370572ef24f1f1b436592cde0e43a3953358feba1d3523bb7a7ac6addefc795937ac24ddcffa7bb437948b25dc04e7f71af79d882b7a29f30f3ddc06e8a154a12b2f17323d689a672b9995f9532a9fce37f9fe2ee958dbc5fa7329030a633bdb4a5be5c78dc29c33690ce3507eeabf4b7796721d1debe4d42dab31933f66da2ae61cec25e215a97c29b81bec98e2bf976ab8271a906039eb967c5c60d8e3b0b5ee9d4a74128d081ed62413427e0e3b6a62665dc27628f38effa684a40a81809c23f1878024d0007bcf2a74a2889576f78ed9ea127d81faaf7bfa240f97737a065d29efa8f9d68fccf317bfa2328c31728e2aa02dd75081fce34862e8c3ceb1856d21cb6376eaf1553eae3a87ebcb235b85c649f9b793e62be229115b04ec82f36cce14b8ca0237096367114bb9b66d5153428fe8</script>
   <div class="hbe hbe-content">
     <div class="hbe hbe-input hbe-input-default">
       <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
@@ -258,235 +255,364 @@
   </div>
 </div>
 <script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
-                    
-                  </div>
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Hexo/">Hexo</a>
-                    
-                      <a class="hover-with-bg" href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">博客搭建</a>
-                    
-                  </div>
-                
-              </div>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/12/20/Csgo-config/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Csgo_config</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/12/20/Python-%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAcsv%E6%96%87%E4%BB%B6/">
-                        <span class="hidden-mobile">Python-合并多个csv文件</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-              <!-- Comments -->
-              <article class="comments" id="comments" lazyload>
-                
-                  
-                
-                
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"R39xnzpcJgvirTriApOIr2Ns-gzGzoHsz","appKey":"W7WqkqL3lT9XNLmMWXxD02tU","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
-          }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
-        })
-      });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
-
-
-              </article>
-            
-          </article>
         </div>
-      </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/Hexo/">#Hexo</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">#博客搭建</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2021/12/20/Csgo-config/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Csgo_config</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2021/12/20/Python-%E5%90%88%E5%B9%B6%E5%A4%9A%E4%B8%AAcsv%E6%96%87%E4%BB%B6/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Python-合并多个csv文件</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
     </div>
     
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
 
-      </div>
-    
-  </div>
-</div>
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'R39xnzpcJgvirTriApOIr2Ns-gzGzoHsz',
+                    appKey: 'W7WqkqL3lT9XNLmMWXxD02tU',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '',
+                    lang: 'zh-CN'.toLowerCase()
+                });
 
-<!-- Custom -->
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
 
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'shadysen';
 
-    
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
-
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
     </div>
-  </div>
+
+
+
+        
+    
 </div>
-    
 
-    
-  </main>
+            </div>
+        
+    </div>
+</div>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
-  </div>
-  
 
-  
+                
+            </div>
 
-  
-  <!-- // 爱心 -->
-	<script src="https://cdn.jsdelivr.net/gh/wallleap/cdn/js/love.js"></script>
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2022</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">shadysen</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
 </footer>
 
+        </div>
+    </div>
 
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
 
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
 
 
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
 
-<!-- Plugins -->
+    
 
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
+</main>
 
 
 
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
 
 
 
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
 
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
 
 
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
 
 
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
 
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
 
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
 
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
 
 
 <script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
