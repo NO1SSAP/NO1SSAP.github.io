@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pass1on.fun/2022/03/07/vue-js-%E4%BD%BF%E7%94%A8-axios/</loc>
+    
+    <lastmod>2022-03-07</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://pass1on.fun/2022/03/07/npm-%E5%AE%89%E8%A3%85%E6%8C%87%E5%AE%9A%E7%89%88%E6%9C%AC%E4%BE%9D%E8%B5%96/</loc>
     
     <lastmod>2022-03-07</lastmod>
@@ -133,20 +142,6 @@
   </url>
   
   <url>
-    <loc>https://pass1on.fun/tags/Hexo/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://pass1on.fun/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://pass1on.fun/tags/Java/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
@@ -169,6 +164,20 @@
   
   <url>
     <loc>https://pass1on.fun/tags/Leetcode/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/Hexo/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -216,10 +225,38 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://pass1on.fun/tags/Vue/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/axios/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/request-js/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
   
   <url>
     <loc>https://pass1on.fun/categories/%E5%8A%A0%E5%AF%86/</loc>
+    <lastmod>2022-03-07</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/categories/%E9%A2%98%E8%A7%A3/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -234,13 +271,6 @@
   
   <url>
     <loc>https://pass1on.fun/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2022-03-07</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://pass1on.fun/categories/%E9%A2%98%E8%A7%A3/</loc>
     <lastmod>2022-03-07</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

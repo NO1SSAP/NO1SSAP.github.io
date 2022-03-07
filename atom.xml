@@ -6,7 +6,7 @@
   <link href="https://pass1on.fun/atom.xml" rel="self"/>
   
   <link href="https://pass1on.fun/"/>
-  <updated>2022-03-07T11:26:06.837Z</updated>
+  <updated>2022-03-07T13:20:29.692Z</updated>
   <id>https://pass1on.fun/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vue.js 使用 axios</title>
+    <link href="https://pass1on.fun/2022/03/07/vue-js-%E4%BD%BF%E7%94%A8-axios/"/>
+    <id>https://pass1on.fun/2022/03/07/vue-js-%E4%BD%BF%E7%94%A8-axios/</id>
+    <published>2022-03-07T13:00:30.000Z</published>
+    <updated>2022-03-07T13:20:29.692Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="安装-axios"><a href="#安装-axios" class="headerlink" title="安装 axios"></a>安装 axios</h1><p><code>npm i axios -S</code></p><h1 id="request-js-封装"><a href="#request-js-封装" class="headerlink" title="request.js 封装"></a>request.js 封装</h1><figure class="highlight javascript"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios <span class="keyword">from</span> <span class="string">'axios'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> request = axios.<span class="title function_">create</span>({</span><br><span class="line">    <span class="attr">baseURL</span>: <span class="string">'/api'</span>,  <span class="comment">// 注意！！ 这里是全局统一加上了 '/api' 前缀，也就是说所有接口都会加上'/api'前缀在，页面里面写接口的时候就不要加 '/api'了，否则会出现2个'/api'，类似 '/api/api/user'这样的报错，切记！！！</span></span><br><span class="line">    <span class="attr">timeout</span>: <span class="number">5000</span></span><br><span class="line">})</span><br><span class="line"></span><br><span class="line"><span class="comment">// request 拦截器</span></span><br><span class="line"><span class="comment">// 可以自请求发送前对请求做一些处理</span></span><br><span class="line"><span class="comment">// 比如统一加token，对请求参数统一加密</span></span><br><span class="line">request.<span class="property">interceptors</span>.<span class="property">request</span>.<span class="title function_">use</span>(<span class="function"><span class="params">config</span> =&gt;</span> {</span><br><span class="line">    config.<span class="property">headers</span>[<span class="string">'Content-Type'</span>] = <span class="string">'application/json;charset=utf-8'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// config.headers['token'] = user.token;  // 设置请求头</span></span><br><span class="line">    <span class="keyword">return</span> config</span><br><span class="line">}, <span class="function"><span class="params">error</span> =&gt;</span> {</span><br><span class="line">    <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error)</span><br><span class="line">});</span><br><span class="line"></span><br><span class="line"><span class="comment">// response 拦截器</span></span><br><span class="line"><span class="comment">// 可以在接口响应后统一处理结果</span></span><br><span class="line">request.<span class="property">interceptors</span>.<span class="property">response</span>.<span class="title function_">use</span>(</span><br><span class="line">    <span class="function"><span class="params">response</span> =&gt;</span> {</span><br><span class="line">        <span class="keyword">let</span> res = response.<span class="property">data</span>;</span><br><span class="line">        <span class="comment">// 如果是返回的文件</span></span><br><span class="line">        <span class="keyword">if</span> (response.<span class="property">config</span>.<span class="property">responseType</span> === <span class="string">'blob'</span>) {</span><br><span class="line">            <span class="keyword">return</span> res</span><br><span class="line">        }</span><br><span class="line">        <span class="comment">// 兼容服务端返回的字符串数据</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">typeof</span> res === <span class="string">'string'</span>) {</span><br><span class="line">            res = res ? <span class="title class_">JSON</span>.<span class="title function_">parse</span>(res) : res</span><br><span class="line">        }</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    },</span><br><span class="line">    <span class="function"><span class="params">error</span> =&gt;</span> {</span><br><span class="line">        <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">'err'</span> + error) <span class="comment">// for debug</span></span><br><span class="line">        <span class="keyword">return</span> <span class="title class_">Promise</span>.<span class="title function_">reject</span>(error)</span><br><span class="line">    }</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> request</span><br><span class="line"></span><br></pre></td></tr></tbody></table></figure><h1 id="在-main-js-中引用-request-对象"><a href="#在-main-js-中引用-request-对象" class="headerlink" title="在 main.js 中引用 request 对象"></a>在 main.js 中引用 request 对象</h1><p><code>Vue.prototype.request=request</code></p>]]></content>
+    
+    
+    <summary type="html">vue 安装使用 axios 以及 request.js 的封装</summary>
+    
+    
+    
+    <category term="过程记录" scheme="https://pass1on.fun/categories/%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Vue" scheme="https://pass1on.fun/tags/Vue/"/>
+    
+    <category term="axios" scheme="https://pass1on.fun/tags/axios/"/>
+    
+    <category term="request.js" scheme="https://pass1on.fun/tags/request-js/"/>
+    
+  </entry>
   
   <entry>
     <title>npm 安装指定版本依赖</title>
