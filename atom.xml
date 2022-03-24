@@ -6,7 +6,7 @@
   <link href="https://pass1on.fun/atom.xml" rel="self"/>
   
   <link href="https://pass1on.fun/"/>
-  <updated>2022-03-24T09:26:29.023Z</updated>
+  <updated>2022-03-24T09:48:02.072Z</updated>
   <id>https://pass1on.fun/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java 基础知识总结</title>
+    <link href="https://pass1on.fun/2022/03/24/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"/>
+    <id>https://pass1on.fun/2022/03/24/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</id>
+    <published>2022-03-24T09:22:34.000Z</published>
+    <updated>2022-03-24T09:48:02.072Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Java-语言具有哪些特点？"><a href="#Java-语言具有哪些特点？" class="headerlink" title="Java 语言具有哪些特点？"></a>Java 语言具有哪些特点？</h2><ol><li>Java 为面向对象的语言。它能够直接反应现实生活中的对象。</li><li>具有平台无关性。java 利用 Java 虚拟机运行字节码，无论是在 Windows、Linux 还是 MacOS 等其它平台对 Java 程序进行编译，编译后的程序可在其它平台运行。</li><li>Java 为解释型语言，编译器把 Java 代码编译成平台无关的中间代码，然后在 JVM 上解释运行，具有很好的可移植性。</li><li>Java 提供了很多内置类库。如对多线程支持，对网络通信支持，最重要的一点是提供了垃圾回收器。</li><li>Java 具有较好的安全性和健壮性。Java 提供了异常处理和垃圾回收机制，去除了 C++ 难以理解的指针特性。</li><li>Java 语言提供了对 Web 应用开发的支持。</li></ol><h2 id="面向对象的三大特性？"><a href="#面向对象的三大特性？" class="headerlink" title="面向对象的三大特性？"></a>面向对象的三大特性？</h2><ol><li>继承：对象的一个新类可以从现有的类中派生，派生类可以从它的基类那继承方法和实例变量，且派生类可以修改或新增新的方法使之更适合特殊的需求。</li><li>封装：将客观事物抽象成类，每个类可以把自身数据和方法只让可信的类或对象操作，对不可信的进行信息隐藏。</li><li>多态：允许不同类的对象对同一消息作出响应。不同对象调用相同方法即使参数也相同，最终表现行为是不一样的。</li></ol><h2 id="字节序定义以及Java属于哪种字节序？"><a href="#字节序定义以及Java属于哪种字节序？" class="headerlink" title="字节序定义以及Java属于哪种字节序？"></a>字节序定义以及Java属于哪种字节序？</h2><p>字节序是指多字节数据在计算机内存中存储或网络传输时个字节的存储顺序。通常由小端和大端两组方式。</p><ol><li>小端：低位字节存放在内存的低地址端，高位字节存放在内存的高地址端。</li><li>大端：高位字节存放在内存的低地址端，低位字节存放在内存的高地址端。</li></ol><p>Java 语言的字节序是大端。</p><h2 id="JDK与JRE有什么区别？"><a href="#JDK与JRE有什么区别？" class="headerlink" title="JDK与JRE有什么区别？"></a>JDK与JRE有什么区别？</h2><ol><li>JDK：Java 开发工具包(Java Development Kit)，提供了 Java 的开发环境和运行环境。</li><li>JRE：Java 运行环境(Java Runtime Environment)，提供了 Java 运行所需的环境。</li></ol><p>JDK 包含了 JRE。如果只运行 Java 程序，安装 JRE 即可。要编写  Java 程序需安装 JDK。</p>]]></content>
+    
+    
+    <summary type="html">Java 基础知识总结</summary>
+    
+    
+    
+    <category term="学习记录" scheme="https://pass1on.fun/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+    
+    <category term="Java" scheme="https://pass1on.fun/tags/Java/"/>
+    
+    <category term="八股文" scheme="https://pass1on.fun/tags/%E5%85%AB%E8%82%A1%E6%96%87/"/>
+    
+    <category term="基础知识" scheme="https://pass1on.fun/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    <category term="学习记录" scheme="https://pass1on.fun/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/"/>
+    
+  </entry>
   
   <entry>
     <title>Java-算法题解</title>

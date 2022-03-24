@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://pass1on.fun/2022/03/24/Java-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/</loc>
+    
+    <lastmod>2022-03-24</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://pass1on.fun/2022/03/16/Java-%E5%89%91%E6%8C%87offer%E9%A2%98%E8%A7%A3/</loc>
     
     <lastmod>2022-03-24</lastmod>
@@ -128,20 +137,6 @@
 
   
   <url>
-    <loc>https://pass1on.fun/tags/Hexo/</loc>
-    <lastmod>2022-03-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://pass1on.fun/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
-    <lastmod>2022-03-24</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://pass1on.fun/tags/Csgo/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
@@ -156,14 +151,14 @@
   </url>
   
   <url>
-    <loc>https://pass1on.fun/tags/Python/</loc>
+    <loc>https://pass1on.fun/tags/Hexo/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pass1on.fun/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
+    <loc>https://pass1on.fun/tags/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -198,14 +193,35 @@
   </url>
   
   <url>
-    <loc>https://pass1on.fun/tags/npm/</loc>
+    <loc>https://pass1on.fun/tags/%E5%85%AB%E8%82%A1%E6%96%87/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pass1on.fun/tags/%E4%BE%9D%E8%B5%96/</loc>
+    <loc>https://pass1on.fun/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/Python/</loc>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -246,7 +262,28 @@
     <priority>0.2</priority>
   </url>
   
+  <url>
+    <loc>https://pass1on.fun/tags/npm/</loc>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://pass1on.fun/tags/%E4%BE%9D%E8%B5%96/</loc>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
 
+  
+  <url>
+    <loc>https://pass1on.fun/categories/%E5%8A%A0%E5%AF%86/</loc>
+    <lastmod>2022-03-24</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
   
   <url>
     <loc>https://pass1on.fun/categories/%E8%BF%87%E7%A8%8B%E8%AE%B0%E5%BD%95/</loc>
@@ -256,7 +293,7 @@
   </url>
   
   <url>
-    <loc>https://pass1on.fun/categories/%E5%8A%A0%E5%AF%86/</loc>
+    <loc>https://pass1on.fun/categories/%E9%A2%98%E8%A7%A3/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -270,14 +307,14 @@
   </url>
   
   <url>
-    <loc>https://pass1on.fun/categories/Python/</loc>
+    <loc>https://pass1on.fun/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://pass1on.fun/categories/%E9%A2%98%E8%A7%A3/</loc>
+    <loc>https://pass1on.fun/categories/Python/</loc>
     <lastmod>2022-03-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
