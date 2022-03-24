@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="shadysen">
+    
+    <title>
+        
+            Redis 知识总结 |
+        
+        Passion&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/img/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"pass1on.fun","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/img/avatar.svg","favicon":"/img/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Passion's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><script src="/js/prism.js"></script></head>
+
+
+<script src="https://g.joyinshare.com/hc/ribbon.min.js" type="text/javascript"></script>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Passion&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">Redis 知识总结</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/img/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">shadysen</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-24 21:41:06</span>
+        <span class="mobile">2022-03-24 21:41</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/Redis/">Redis</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>2.1k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>7 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="Redis-单线程原理"><a href="#Redis-单线程原理" class="headerlink" title="Redis 单线程原理"></a>Redis 单线程原理</h2><p>首先必须明确，Redis 单线程指的是网络请求模块使用了一个线程（，其他模块仍用了多个线程。并不是一个线程完成了所有功能。 原理上，其采用了利用 epoll 的多路复用特性，因此可以采用单线程处理其网络请求。</p>
+<h2 id="Redis-数据类型"><a href="#Redis-数据类型" class="headerlink" title="Redis 数据类型"></a>Redis 数据类型</h2><p>String：字符串类型，最简单的类型 </p>
+<p>Hash：类似于 Map 的一种结构</p>
+<p>List：有序列表</p>
+<p>Set：无序集合</p>
+<p>ZSet：带权值的无序集合，即每个 ZSet 元素还另有一个数字代表权值，集合通过权值进行排序。</p>
+<h2 id="什么情况下使用-redis"><a href="#什么情况下使用-redis" class="headerlink" title="什么情况下使用 redis"></a>什么情况下使用 redis</h2><ol>
+<li>针对热点数据进行缓存</li>
+<li>对于特定限时数据的存放</li>
+<li>针对带热点权值数据的排序list</li>
+<li>分布式锁</li>
+</ol>
+<h2 id="redis-与-memcache-的区别"><a href="#redis-与-memcache-的区别" class="headerlink" title="redis 与 memcache 的区别"></a>redis 与 memcache 的区别</h2><ol>
+<li>redis 处理网络请求采用单线程模型，而 memcache 采用多线程异步 IO 的方式</li>
+<li>redis 支持数据持久化，memcache 不支持</li>
+<li>redis 支持的数据格式比 memcache 更多</li>
+</ol>
+<h2 id="简述缓存穿透"><a href="#简述缓存穿透" class="headerlink" title="简述缓存穿透"></a>简述缓存穿透</h2><p>缓存穿透指缓存和数据库均没有需要查询的数据，攻击者不断发送这种请求，使数据库压力过大。</p>
+<h2 id="简述缓存穿透的解决方法"><a href="#简述缓存穿透的解决方法" class="headerlink" title="简述缓存穿透的解决方法"></a>简述缓存穿透的解决方法</h2><ol>
+<li>在数据库操作访问前进行校验，对不合法请求直接返回。</li>
+<li>对于经常被访问的，并且数据库没有的键，缓存层记录键 =null。</li>
+</ol>
+<h2 id="简述缓存击穿"><a href="#简述缓存击穿" class="headerlink" title="简述缓存击穿"></a>简述缓存击穿</h2><p>缓存击穿指缓存中没有数据，但数据库中有该数据。一般这种情况指特定数据的缓存时间到期，但由于并发用户访问该数据特别多，因此去数据库去取数据，引起数据库访问压力过大</p>
+<h2 id="简述缓存击穿的解决方法"><a href="#简述缓存击穿的解决方法" class="headerlink" title="简述缓存击穿的解决方法"></a>简述缓存击穿的解决方法</h2><ol>
+<li>设置热点数据永远不过期。</li>
+<li>对并发读数据设置并发锁，降低并发性</li>
+</ol>
+<h2 id="简述缓存雪崩"><a href="#简述缓存雪崩" class="headerlink" title="简述缓存雪崩"></a>简述缓存雪崩</h2><p>缓存雪崩指缓存中一大批数据到过期时间，而从缓存中删除。但该批数据查询数据量巨大，查询全部走数据库，造成数据库压力过大。</p>
+<h2 id="简述缓存雪崩的解决方法"><a href="#简述缓存雪崩的解决方法" class="headerlink" title="简述缓存雪崩的解决方法"></a>简述缓存雪崩的解决方法</h2><ol>
+<li>缓存数据设置随机过期时间，防止同一时间大量数据过期。</li>
+<li>设置热点数据永远不过期。</li>
+<li>对于集群部署的情况，将热点数据均与分布在不同缓存中。</li>
+</ol>
+<h2 id="Redis-有哪些集群部署方式"><a href="#Redis-有哪些集群部署方式" class="headerlink" title="Redis 有哪些集群部署方式"></a>Redis 有哪些集群部署方式</h2><ol>
+<li>主从复制</li>
+<li>哨兵模式</li>
+<li>Cluster 集群模式</li>
+</ol>
+<h2 id="简述主从复制模式"><a href="#简述主从复制模式" class="headerlink" title="简述主从复制模式"></a>简述主从复制模式</h2><p>在主从复制中，有主库（Master）节点和从库（Slave）节点两个角色。 从节点服务启动会连接主库，并向主库发送 SYNC 命令。</p>
+<p>主节点收到同步命令，启动持久化工作，工作执行完成后，主节点将传送整个数据库文件到从库，从节点接收到数据库文件数据之后将数据进行加载。此后，主节点继续将所有已经收集到的修改命令，和新的修改命令依次传送给从节点，从节点依次执行，从而达到最终的数据同步。</p>
+<p>通过这种方式，可以使写操作作用于主库，而读操作作用于从库，从而达到读写分离。</p>
+<h2 id="简述哨兵模式"><a href="#简述哨兵模式" class="headerlink" title="简述哨兵模式"></a>简述哨兵模式</h2><p>哨兵模式监控 redis集群中 Master 的工作的状态。在 Master 主服务器宕机时，从 slave 中选择新机器当作 master，保证系统高可用。</p>
+<p>每个哨兵每 10 秒向主服务器，slave 和其他哨兵发送 ping。</p>
+<p>客户端通过哨兵，由哨兵提供可供服务的 redis master 节点。</p>
+<p>哨兵只需要配 master 节点，会自动寻找其对应的 slave 节点。</p>
+<p>监控同一 master 节点的哨兵会自动互联，组成哨兵网络，当任一哨兵发现 master 连接不上，即开会投票，投票半数以上决定 Master 下线，并从 slave 节点中选取 master 节点。</p>
+<h2 id="cluster-集群"><a href="#cluster-集群" class="headerlink" title="cluster 集群"></a>cluster 集群</h2><p>cluster 提出了虚拟槽的概念。</p>
+<ol>
+<li>redis cluster 默认有 16384 个槽，在集群搭建的时候，需要给节点分配哈希槽尽可能相同数量虚拟槽。</li>
+<li>如果目前 redis 执行 set 操作，redis 先对这个 key 经过 CRC16 hash 运算，并把结果对 16384 取余，得到槽编号。</li>
+<li>根据槽编号，寻找到其对应的 redis 节点，在节点上执行 hash 命令。</li>
+<li>如果此时执行 get 操作，节点先验证该 key 对应的槽编号是不是归本节点管，如果是则保存数据。如果不是，则发送正确节点编号给客户端。</li>
+</ol>
+<h2 id="简述-Redis-的-RDB"><a href="#简述-Redis-的-RDB" class="headerlink" title="简述 Redis 的 RDB"></a>简述 Redis 的 RDB</h2><p>RDB 即将当前数据生成快照，并保存于硬盘中。可以通过手动命令，也可以设置自动触发。</p>
+<h2 id="简述-Redis-的-save-命令"><a href="#简述-Redis-的-save-命令" class="headerlink" title="简述 Redis 的 save 命令"></a>简述 Redis 的 save 命令</h2><p>save 命令是 redis 手动触发 RDB 过程的命令。使用该命令后，服务器阻塞，直到 RDB 过程完成后终止。该过程占用内存较多。</p>
+<h2 id="简述-Redis-的-bgsave-命令"><a href="#简述-Redis-的-bgsave-命令" class="headerlink" title="简述 Redis 的 bgsave 命令"></a>简述 Redis 的 bgsave 命令</h2><p>bgsave 命令不阻塞主进程（严格意义上也不是完全不阻塞，详看下面过程），该命令 fork 一个子进程用于执行 RDB 过程。其具体过程为：</p>
+<ol>
+<li>判断此时有没有子进程用于 RDB，有的话直接返回。</li>
+<li>redis 进行 fork 子进程过程，此时父进程处于阻塞状态。</li>
+<li>子进程创建 RDB 文件，完成后返回给父进程</li>
+</ol>
+<h2 id="简述-Redis-自动触发-RDB-机制"><a href="#简述-Redis-自动触发-RDB-机制" class="headerlink" title="简述 Redis 自动触发 RDB 机制"></a>简述 Redis 自动触发 RDB 机制</h2><ol>
+<li>通过配置文件，设置一定时间后自动执行 RDB</li>
+<li>如采用主从复制过程，会自动执行 RDB</li>
+<li>Redis 执行 shutdown 时，在未开启 AOF 后会执行 RDB</li>
+</ol>
+<h2 id="简述-Redis-的-AOF"><a href="#简述-Redis-的-AOF" class="headerlink" title="简述 Redis 的 AOF"></a>简述 Redis 的 AOF</h2><p>AOF 通过日志，对数据的写入修改操作进行记录。这种持久化方式实时性更好。通过配置文件打开 AOF。</p>
+<h2 id="简述-AOF-的持久化策略"><a href="#简述-AOF-的持久化策略" class="headerlink" title="简述 AOF 的持久化策略"></a>简述 AOF 的持久化策略</h2><ol>
+<li>always。每执行一次数据修改命令就将其命令写入到磁盘日志文件上。</li>
+<li>everysec。每秒将命令写入到磁盘日志文件上。</li>
+<li>no。不主动设置，由操作系统决定什么时候写入到磁盘日志文件上。</li>
+</ol>
+<h2 id="RDB-与-AOF-优缺点比较"><a href="#RDB-与-AOF-优缺点比较" class="headerlink" title="RDB 与 AOF 优缺点比较"></a>RDB 与 AOF 优缺点比较</h2><p>AOF 占用的文件体积比 RDB 大。一般来说利用 AOF 备份对系统的消耗比 RDB 低。对于备份时出现系统故障，RDB 数据可能会全丢，但AOF 只会损失一部分。 RDB 恢复速度比 AOF 低。</p>
+<h2 id="简述-Redis-淘汰机制"><a href="#简述-Redis-淘汰机制" class="headerlink" title="简述 Redis 淘汰机制"></a>简述 Redis 淘汰机制</h2><ol>
+<li>noeviction：默认禁止驱逐数据。内存不够使用时，对申请内存的命令报错。</li>
+<li>volatile-lru：从设置了过期时间的数据集中淘汰最近没使用的数据。</li>
+<li>volatile-ttl：从设置了过期时间的数据集中淘汰即将要过期的数据。</li>
+<li>volatile-random：从设置了过期时间的数据中随机淘汰数据。</li>
+<li>allkeys-lru：淘汰最近没使用的数据。</li>
+<li>allkeys-random：随机淘汰数据。</li>
+</ol>
+<h2 id="MySQL-与-Redis-区别"><a href="#MySQL-与-Redis-区别" class="headerlink" title="MySQL 与 Redis 区别"></a>MySQL 与 Redis 区别</h2><p>mysql 是关系型数据库，并且其将数据存储在硬盘中，读取速度较慢。</p>
+<p>redis 是非关系型数据库，并且其将数据存储在内存中，读取速度较快。</p>
+<h2 id="简述-Redis-过期策略"><a href="#简述-Redis-过期策略" class="headerlink" title="简述 Redis 过期策略"></a>简述 Redis 过期策略</h2><ol>
+<li>定期删除，redis 默认是每 100ms 就随机抽取一些设置了过期时间的 key，并检查其是否过期，如果过期就删除。因此该删除策略并不会删除所有的过期 key。</li>
+<li>惰性删除，在客户端需要获取某个 key 时，redis 将首先进行检查，若该 key 设置了过期时间并已经过期就会删除。</li>
+</ol>
+<p>实际上 redis 结合上述两种手段结合起来，保证删除过期的 key。</p>
+<h2 id="Redis-基本数据类型实现原理"><a href="#Redis-基本数据类型实现原理" class="headerlink" title="Redis 基本数据类型实现原理"></a>Redis 基本数据类型实现原理</h2><p>字符串：采用类似数组的形式存储 </p>
+<p>list：采用双向链表进行具体实现 </p>
+<p>hash：采用 hashtable 或者 ziplist 进行具体实现 </p>
+<p>集合：采用 intset 或 hashtable 存储 </p>
+<p>有序集合：采用 ziplist 或 skiplist+hashtable 实现</p>
+<h2 id="Redis-快的原因"><a href="#Redis-快的原因" class="headerlink" title="Redis 快的原因"></a>Redis 快的原因</h2><ol>
+<li>redis 是基于内存的数据库，内存数据读取存储效率远高于硬盘型</li>
+<li>redis 采用多路复用技术通过采用 epoll 的非阻塞 IO，提升了效率</li>
+</ol>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">#八股文</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">#学习记录</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/Redis/">#Redis</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/03/24/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">设计模式知识总结</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/24/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">数据库知识总结</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'R39xnzpcJgvirTriApOIr2Ns-gzGzoHsz',
+                    appKey: 'W7WqkqL3lT9XNLmMWXxD02tU',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'shadysen';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2021</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">shadysen</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%8D%95%E7%BA%BF%E7%A8%8B%E5%8E%9F%E7%90%86"><span class="nav-text">Redis 单线程原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-text">Redis 数据类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E4%BD%BF%E7%94%A8-redis"><span class="nav-text">什么情况下使用 redis</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#redis-%E4%B8%8E-memcache-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="nav-text">redis 与 memcache 的区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F"><span class="nav-text">简述缓存穿透</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BC%93%E5%AD%98%E7%A9%BF%E9%80%8F%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">简述缓存穿透的解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF"><span class="nav-text">简述缓存击穿</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BC%93%E5%AD%98%E5%87%BB%E7%A9%BF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">简述缓存击穿的解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9"><span class="nav-text">简述缓存雪崩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%BC%93%E5%AD%98%E9%9B%AA%E5%B4%A9%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-text">简述缓存雪崩的解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E6%9C%89%E5%93%AA%E4%BA%9B%E9%9B%86%E7%BE%A4%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="nav-text">Redis 有哪些集群部署方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E6%A8%A1%E5%BC%8F"><span class="nav-text">简述主从复制模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%93%A8%E5%85%B5%E6%A8%A1%E5%BC%8F"><span class="nav-text">简述哨兵模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cluster-%E9%9B%86%E7%BE%A4"><span class="nav-text">cluster 集群</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Redis-%E7%9A%84-RDB"><span class="nav-text">简述 Redis 的 RDB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Redis-%E7%9A%84-save-%E5%91%BD%E4%BB%A4"><span class="nav-text">简述 Redis 的 save 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Redis-%E7%9A%84-bgsave-%E5%91%BD%E4%BB%A4"><span class="nav-text">简述 Redis 的 bgsave 命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Redis-%E8%87%AA%E5%8A%A8%E8%A7%A6%E5%8F%91-RDB-%E6%9C%BA%E5%88%B6"><span class="nav-text">简述 Redis 自动触发 RDB 机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Redis-%E7%9A%84-AOF"><span class="nav-text">简述 Redis 的 AOF</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-AOF-%E7%9A%84%E6%8C%81%E4%B9%85%E5%8C%96%E7%AD%96%E7%95%A5"><span class="nav-text">简述 AOF 的持久化策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RDB-%E4%B8%8E-AOF-%E4%BC%98%E7%BC%BA%E7%82%B9%E6%AF%94%E8%BE%83"><span class="nav-text">RDB 与 AOF 优缺点比较</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Redis-%E6%B7%98%E6%B1%B0%E6%9C%BA%E5%88%B6"><span class="nav-text">简述 Redis 淘汰机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E4%B8%8E-Redis-%E5%8C%BA%E5%88%AB"><span class="nav-text">MySQL 与 Redis 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Redis-%E8%BF%87%E6%9C%9F%E7%AD%96%E7%95%A5"><span class="nav-text">简述 Redis 过期策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-text">Redis 基本数据类型实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Redis-%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-text">Redis 快的原因</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>

@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="keywords" content="Hexo Theme Keep">
+    <meta name="description" content="Hexo Theme Keep">
+    <meta name="author" content="shadysen">
+    
+    <title>
+        
+            JVM 知识总结 |
+        
+        Passion&#39;s Blog
+    </title>
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <link rel="shortcut icon" href="/img/logo.svg">
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/css/font-awesome.min.css">
+    <script id="hexo-configurations">
+    let KEEP = window.KEEP || {};
+    KEEP.hexo_config = {"hostname":"pass1on.fun","root":"/","language":"zh-CN","path":"search.json"};
+    KEEP.theme_config = {"toc":{"enable":true,"number":false,"expand_all":true,"init_open":false},"style":{"primary_color":"#0066CC","avatar":"/img/avatar.svg","favicon":"/img/logo.svg","article_img_align":"left","left_side_width":"260px","content_max_width":"920px","hover":{"shadow":false,"scale":false},"first_screen":{"enable":false,"background_img":"/images/bg.svg","description":"Keep writing and Keep loving."},"scroll":{"progress_bar":{"enable":false},"percent":{"enable":false}}},"local_search":{"enable":true,"preload":true},"code_copy":{"enable":true,"style":"default"},"pjax":{"enable":true},"lazyload":{"enable":true},"version":"3.4.5"};
+    KEEP.language_ago = {"second":"%s 秒前","minute":"%s 分钟前","hour":"%s 小时前","day":"%s 天前","week":"%s 周前","month":"%s 个月前","year":"%s 年前"};
+  </script>
+<meta name="generator" content="Hexo 5.4.1">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Passion's Blog" type="application/atom+xml">
+<link rel="stylesheet" href="/css/prism.css" type="text/css"><script src="/js/prism.js"></script></head>
+
+
+<script src="https://g.joyinshare.com/hc/ribbon.min.js" type="text/javascript"></script>
+<body>
+<div class="progress-bar-container">
+    
+
+    
+        <span class="pjax-progress-bar"></span>
+        <span class="pjax-progress-icon">
+            <i class="fas fa-circle-notch fa-spin"></i>
+        </span>
+    
+</div>
+
+
+<main class="page-container">
+
+    
+
+    <div class="page-main-content">
+
+        <div class="page-main-content-top">
+            <header class="header-wrapper">
+
+    <div class="header-content">
+        <div class="left">
+            
+            <a class="logo-title" href="/">
+                Passion&#39;s Blog
+            </a>
+        </div>
+
+        <div class="right">
+            <div class="pc">
+                <ul class="menu-list">
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/"
+                            >
+                                首页
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/archives"
+                            >
+                                归档
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/categories"
+                            >
+                                分类
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/tags"
+                            >
+                                标签
+                            </a>
+                        </li>
+                    
+                        <li class="menu-item">
+                            <a class=""
+                               href="/about"
+                            >
+                                关于
+                            </a>
+                        </li>
+                    
+                    
+                        <li class="menu-item search search-popup-trigger">
+                            <i class="fas fa-search"></i>
+                        </li>
+                    
+                </ul>
+            </div>
+            <div class="mobile">
+                
+                    <div class="icon-item search search-popup-trigger"><i class="fas fa-search"></i></div>
+                
+                <div class="icon-item menu-bar">
+                    <div class="menu-bar-middle"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="header-drawer">
+        <ul class="drawer-menu-list">
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/">首页</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/archives">归档</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/categories">分类</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/tags">标签</a>
+                </li>
+            
+                <li class="drawer-menu-item flex-center">
+                    <a class=""
+                       href="/about">关于</a>
+                </li>
+            
+        </ul>
+    </div>
+
+    <div class="window-mask"></div>
+
+</header>
+
+
+        </div>
+
+        <div class="page-main-content-middle">
+
+            <div class="main-content">
+
+                
+                    <div class="fade-in-down-animation">
+    <div class="article-content-container">
+
+        <div class="article-title">
+            <span class="title-hover-animation">JVM 知识总结</span>
+        </div>
+
+        
+            <div class="article-header">
+                <div class="avatar">
+                    <img src="/img/avatar.svg">
+                </div>
+                <div class="info">
+                    <div class="author">
+                        <span class="name">shadysen</span>
+                        
+                    </div>
+                    <div class="meta-info">
+                        <div class="article-meta-info">
+    <span class="article-date article-meta-item">
+        <i class="fas fa-edit"></i>&nbsp;
+        <span class="pc">2022-03-24 19:11:58</span>
+        <span class="mobile">2022-03-24 19:11</span>
+    </span>
+    
+        <span class="article-categories article-meta-item">
+            <i class="fas fa-folder"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/categories/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+    
+        <span class="article-tags article-meta-item">
+            <i class="fas fa-tags"></i>&nbsp;
+            <ul>
+                
+                    <li>
+                        <a href="/tags/Java/">Java</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/JVM/">JVM</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">八股文</a>&nbsp;
+                    </li>
+                
+                    <li>
+                        | <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        </span>
+    
+
+    
+    
+        <span class="article-wordcount article-meta-item">
+            <i class="fas fa-file-word"></i>&nbsp;<span>4k 字</span>
+        </span>
+    
+    
+        <span class="article-min2read article-meta-item">
+            <i class="fas fa-clock"></i>&nbsp;<span>13 分钟</span>
+        </span>
+    
+    
+        <span class="article-pv article-meta-item">
+            <i class="fas fa-eye"></i>&nbsp;<span id="busuanzi_value_page_pv"></span>
+        </span>
+    
+</div>
+
+                    </div>
+                </div>
+            </div>
+        
+
+        <div class="article-content markdown-body">
+            <h2 id="简述-JVM-内存模型"><a href="#简述-JVM-内存模型" class="headerlink" title="简述 JVM 内存模型"></a>简述 JVM 内存模型</h2><p>线程私有的运行时数据区: 程序计数器、Java 虚拟机栈、本地方法栈。</p>
+<p>线程共享的运行时数据区:Java 堆、方法区。</p>
+<h2 id="简述程序计数器"><a href="#简述程序计数器" class="headerlink" title="简述程序计数器"></a>简述程序计数器</h2><p>程序计数器表示当前线程所执行的字节码的行号指示器。</p>
+<p>程序计数器不会产生 StackOverflowError 和 OutOfMemoryError。</p>
+<h2 id="简述虚拟机栈"><a href="#简述虚拟机栈" class="headerlink" title="简述虚拟机栈"></a>简述虚拟机栈</h2><p>Java 虚拟机栈用来描述 Java 方法执行的内存模型。线程创建时就会分配一个栈空间，线程结束后栈空间被回收。</p>
+<p>栈中元素用于支持虚拟机进行方法调用，每个方法在执行时都会创建一个栈帧存储方法的局部变量表、操作栈、动态链接和返回地址等信息。</p>
+<p>虚拟机栈会产生两类异常：</p>
+<p>StackOverflowError：线程请求的栈深度大于虚拟机允许的深度抛出。</p>
+<p>OutOfMemoryError：如果 JVM 栈容量可以动态扩展，虚拟机栈占用内存超出抛出。</p>
+<h2 id="简述本地方法栈"><a href="#简述本地方法栈" class="headerlink" title="简述本地方法栈"></a>简述本地方法栈</h2><p>本地方法栈与虚拟机栈作用相似，不同的是虚拟机栈为虚拟机执行 Java 方法服务，本地方法栈为本地方法服务。可以将虚拟机栈看作普通的 java 函数对应的内存模型，本地方法栈看作由 native 关键词修饰的函数对应的内存模型。</p>
+<p>本地方法栈会产生两类异常：</p>
+<p>StackOverflowError：线程请求的栈深度大于虚拟机允许的深度抛出。</p>
+<p>OutOfMemoryError：如果 JVM 栈容量可以动态扩展，虚拟机栈占用内存超出抛出。</p>
+<h2 id="简述-JVM-中的堆"><a href="#简述-JVM-中的堆" class="headerlink" title="简述 JVM 中的堆"></a>简述 JVM 中的堆</h2><p>堆主要作用是存放对象实例，Java 里几乎所有对象实例都在堆分配内存，堆也是内存管理中最大的一块。Java 的垃圾回收主要就是针对堆这一区域进行。 可通过 -Xms 和 -Xmx 设置堆的最小和最大容量。</p>
+<p>堆会抛出 OutOfMemoryError 异常。</p>
+<h2 id="简述方法区"><a href="#简述方法区" class="headerlink" title="简述方法区"></a>简述方法区</h2><p>方法区用于存储被虚拟机加载的类信息、常量、静态变量等数据。</p>
+<p>JDK6 之前使用永久代实现方法区，容易内存溢出。JDK7 把放在永久代的字符串常量池、静态变量等移出，JDK8 中抛弃永久代，改用在本地内存中实现的元空间来实现方法区，把 JDK7 中永久代内容移到元空间。</p>
+<p>方法区会抛出 OutOfMemoryError 异常。</p>
+<h2 id="简述运行时常量池"><a href="#简述运行时常量池" class="headerlink" title="简述运行时常量池"></a>简述运行时常量池</h2><p>运行时常量池存放常量池表，用于存放编译器生成的各种字面量与符号引用。一般除了保存 Class 文件中描述的符号引用外，还会把符号引用翻译的直接引用也存储在运行时常量池。除此之外，也会存放字符串基本类型。</p>
+<p>JDK8 之前，放在方法区，大小受限于方法区。JDK8 将运行时常量池存放堆中。</p>
+<h2 id="简述直接内存"><a href="#简述直接内存" class="headerlink" title="简述直接内存"></a>简述直接内存</h2><p>直接内存也称为堆外内存，就是把内存对象分配在 JVM 堆外的内存区域。这部分内存不是虚拟机管理，而是由操作系统来管理。 Java 通过通过 DriectByteBuffer 对其进行操作，避免了在 Java 堆和 Native 堆来回复制数据。</p>
+<h2 id="简述-Java-创建对象的过程"><a href="#简述-Java-创建对象的过程" class="headerlink" title="简述 Java 创建对象的过程"></a>简述 Java 创建对象的过程</h2><ol>
+<li>检查该指令的参数能否在常量池中定位到一个类的符号引用，并检查引用代表的类是否已被加载、解析和初始化，如果没有就先执行类加载。</li>
+<li>通过检查通过后虚拟机将为新生对象分配内存。</li>
+<li>完成内存分配后虚拟机将成员变量设为零值</li>
+<li>设置对象头，包括哈希码、GC 信息、锁信息、对象所属类的类元信息等。</li>
+<li>执行 init 方法，初始化成员变量，执行实例化代码块，调用类的构造方法，并把堆内对象的首地址赋值给引用变量。</li>
+</ol>
+<h2 id="简述-JVM-给对象分配内存的策略"><a href="#简述-JVM-给对象分配内存的策略" class="headerlink" title="简述 JVM 给对象分配内存的策略"></a>简述 JVM 给对象分配内存的策略</h2><ol>
+<li>指针碰撞： 这种方式在内存中放一个指针作为分界指示器将使用过的内存放在一边，空闲的放在另一边，通过指针挪动完成分配。</li>
+<li>空闲列表： 对于 Java 堆内存不规整的情况，虚拟机必须维护一个列表记录哪些内存可用，在分配时从列表中找到一块足够大的空间划分给对象并更新列表记录。</li>
+</ol>
+<h2 id="Java-对象内存分配是如何保证线程安全的"><a href="#Java-对象内存分配是如何保证线程安全的" class="headerlink" title="Java 对象内存分配是如何保证线程安全的"></a>Java 对象内存分配是如何保证线程安全的</h2><ol>
+<li>对分配内存空间采用 CAS 机制，配合失败重试的方式保证更新操作的原子性。该方式效率低。</li>
+<li>每个线程在 Java 堆中预先分配一小块内存，然后再给对象分配内存的时候，直接在自己这块”私有”内存中分配。一般采用这种策略。</li>
+</ol>
+<h2 id="简述对象的内存布局"><a href="#简述对象的内存布局" class="headerlink" title="简述对象的内存布局"></a>简述对象的内存布局</h2><p>对象在堆内存的存储布局可分为对象头、实例数据和对齐填充。</p>
+<p>对象头主要包含两部分数据： MarkWord、类型指针。MarkWord 用于存储哈希码（HashCode）、GC分代年龄、锁状态标志位、线程持有的锁、偏向线程 ID 等信息。 类型指针即对象指向他的类元数据指针，如果对象是一个 Java 数组，会有一块用于记录数组长度的数据，</p>
+<p>实例数据存储代码中所定义的各种类型的字段信息。</p>
+<p>对齐填充起占位作用。HotSpot 虚拟机要求对象的起始地址必须是8的整数倍，因此需要对齐填充。</p>
+<h2 id="如何判断对象是否是垃圾"><a href="#如何判断对象是否是垃圾" class="headerlink" title="如何判断对象是否是垃圾"></a>如何判断对象是否是垃圾</h2><p>引用计数法：设置引用计数器，对象被引用计数器加 1，引用失效时计数器减 1，如果计数器为 0 则被标记为垃圾。会存在对象间循环引用的问题，一般不使用这种方法。</p>
+<p>可达性分析：通过 GC Roots 的根对象作为起始节点，从这些节点开始，根据引用关系向下搜索，如果某个对象没有被搜到，则会被标记为垃圾。可作为 GC Roots 的对象包括虚拟机栈和本地方法栈中引用的对象、类静态属性引用的对象、常量引用的对象。</p>
+<h2 id="简述-Java-的引用类型"><a href="#简述-Java-的引用类型" class="headerlink" title="简述 Java 的引用类型"></a>简述 Java 的引用类型</h2><p>强引用：被强引用关联的对象不会被回收。一般采用 new 方法创建强引用。</p>
+<p>软引用：被软引用关联的对象只有在内存不够的情况下才会被回收。一般采用 SoftReference 类来创建软引用。</p>
+<p>弱引用：垃圾收集器碰到即回收，也就是说它只能存活到下一次垃圾回收发生之前。一般采用 WeakReference 类来创建弱引用。</p>
+<p>虚引用：无法通过该引用获取对象。唯一目的就是为了能在对象被回收时收到一个系统通知。虚引用必须与引用队列联合使用。</p>
+<h2 id="简述标记清除算法、标记整理算法和标记复制算法"><a href="#简述标记清除算法、标记整理算法和标记复制算法" class="headerlink" title="简述标记清除算法、标记整理算法和标记复制算法"></a>简述标记清除算法、标记整理算法和标记复制算法</h2><p>标记清除算法：先标记需清除的对象，之后统一回收。这种方法效率不高，会产生大量不连续的碎片。</p>
+<p>标记整理算法：先标记存活对象，然后让所有存活对象向一端移动，之后清理端边界以外的内存</p>
+<p>标记复制算法：将可用内存按容量划分为大小相等的两块，每次只使用其中一块。当使用的这块空间用完了，就将存活对象复制到另一块，再把已使用过的内存空间一次清理掉。</p>
+<h2 id="简述分代收集算法"><a href="#简述分代收集算法" class="headerlink" title="简述分代收集算法"></a>简述分代收集算法</h2><p>根据对象存活周期将内存划分为几块，不同块采用适当的收集算法。 一般将堆分为新生代和老年代，对这两块采用不同的算法。 </p>
+<p>新生代使用：标记复制算法</p>
+<p>老年代使用：标记清除或者标记整理算法</p>
+<h2 id="简述-Serial-垃圾收集器"><a href="#简述-Serial-垃圾收集器" class="headerlink" title="简述 Serial 垃圾收集器"></a>简述 Serial 垃圾收集器</h2><p>单线程串行收集器。垃圾回收的时候，必须暂停其他所有线程。新生代使用标记复制算法，老年代使用标记整理算法。简单高效。</p>
+<h2 id="简述-ParNew-垃圾收集器"><a href="#简述-ParNew-垃圾收集器" class="headerlink" title="简述 ParNew 垃圾收集器"></a>简述 ParNew 垃圾收集器</h2><p>可以看作 Serial 垃圾收集器的多线程版本，新生代使用标记复制算法，老年代使用标记整理算法。</p>
+<h2 id="简述-Parallel-Scavenge-垃圾收集器"><a href="#简述-Parallel-Scavenge-垃圾收集器" class="headerlink" title="简述 Parallel Scavenge 垃圾收集器"></a>简述 Parallel Scavenge 垃圾收集器</h2><p>注重吞吐量，即 cpu 运行代码时间 / cpu 耗时总时间（cpu 运行代码时间+ 垃圾回收时间）。新生代使用标记复制算法，老年代使用标记整理算法。</p>
+<h2 id="简述-CMS-垃圾收集器"><a href="#简述-CMS-垃圾收集器" class="headerlink" title="简述 CMS 垃圾收集器"></a>简述 CMS 垃圾收集器</h2><p>注重最短时间停顿。CMS 垃圾收集器为最早提出的并发收集器，垃圾收集线程与用户线程同时工作。采用标记清除算法。该收集器分为初始标记、并发标记、并发预清理、并发清除、并发重置这么几个步骤。</p>
+<p>初始标记：暂停其他线程(stop the world)，标记与 GC roots 直接关联的对象。</p>
+<p>并发标记：可达性分析过程(程序不会停顿)。</p>
+<p>并发预清理：查找执行并发标记阶段从年轻代晋升到老年代的对象，重新标记，暂停虚拟机（stop the world）扫描 CMS 堆中剩余对象。</p>
+<p>并发清除：清理垃圾对象，(程序不会停顿)。</p>
+<p>并发重置：重置 CMS 收集器的数据结构。</p>
+<h2 id="简述-G1-垃圾收集器"><a href="#简述-G1-垃圾收集器" class="headerlink" title="简述 G1 垃圾收集器"></a>简述 G1 垃圾收集器</h2><p>和之前收集器不同，该垃圾收集器把堆划分成多个大小相等的独立区域（Region），新生代和老年代不再物理隔离。通过引入 Region 的概念，从而将原来的一整块内存空间划分成多个的小空间，使得每个小空间可以单独进行垃圾回收。</p>
+<p>初始标记：标记与 GC roots 直接关联的对象。</p>
+<p>并发标记：可达性分析。</p>
+<p>最终标记，对并发标记过程中，用户线程修改的对象再次标记一下。</p>
+<p>筛选回收：对各个 Region 的回收价值和成本进行排序，然后根据用户所期望的 GC 停顿时间制定回收计划并回收。</p>
+<h2 id="简述-Minor-GC"><a href="#简述-Minor-GC" class="headerlink" title="简述 Minor GC"></a>简述 Minor GC</h2><p>Minor GC 指发生在新生代的垃圾收集，因为 Java 对象大多存活时间短，所以 Minor GC 非常频繁，一般回收速度也比较快。</p>
+<h2 id="简述-Full-GC"><a href="#简述-Full-GC" class="headerlink" title="简述 Full GC"></a>简述 Full GC</h2><p>Full GC 是清理整个堆空间—包括年轻代和永久代。调用 System.gc(),老年代空间不足，空间分配担保失败，永生代空间不足会产生 full gc。</p>
+<h2 id="常见内存分配策略"><a href="#常见内存分配策略" class="headerlink" title="常见内存分配策略"></a>常见内存分配策略</h2><p>大多数情况下对象在新生代 Eden 区分配，当 Eden 没有足够空间时将发起一次 Minor GC。</p>
+<p>大对象需要大量连续内存空间，直接进入老年代区分配。</p>
+<p>如果经历过第一次 Minor GC 仍然存活且能被 Survivor 容纳，该对象就会被移动到 Survivor 中并将年龄设置为 1，并且每熬过一次 Minor GC 年龄就加 1 ，当增加到一定程度（默认15）就会被晋升到老年代。</p>
+<p>如果在 Survivor 中相同年龄所有对象大小的总和大于 Survivor 的一半，年龄不小于该年龄的对象就可以直接进入老年代。</p>
+<p>空间分配担保。MinorGC 前虚拟机必须检查老年代最大可用连续空间是否大于新生代对象总空间，如果满足则说明这次 Minor GC 确定安全。如果不，JVM 会查看 HandlePromotionFailure 参数是否允许担保失败，如果允许会继续检查老年代最大可用连续空间是否大于历次晋升老年代对象的平均大小，如果满足将 Minor GC，否则改成一次 FullGC。</p>
+<h2 id="简述-JVM-类加载过程"><a href="#简述-JVM-类加载过程" class="headerlink" title="简述 JVM 类加载过程"></a>简述 JVM 类加载过程</h2><p>加载：</p>
+<ol>
+<li>通过全类名获取类的二进制字节流.</li>
+<li>将类的静态存储结构转化为方法区的运行时数据结构。</li>
+<li>在内存中生成类的 Class 对象，作为方法区数据的入口。</li>
+</ol>
+<p>验证：对文件格式，元数据，字节码，符号引用等验证正确性。</p>
+<p>准备：在方法区内为类变量分配内存并设置为 0 值。</p>
+<p>解析：将符号引用转化为直接引用。</p>
+<p>初始化：执行类构造器 clinit 方法，真正初始化。</p>
+<h2 id="简述-JVM-中的类加载器"><a href="#简述-JVM-中的类加载器" class="headerlink" title="简述 JVM 中的类加载器"></a>简述 JVM 中的类加载器</h2><p>BootstrapClassLoader 启动类加载器：加载 /lib 下的 jar 包和类。C++ 编写。</p>
+<p>ExtensionClassLoader 扩展类加载器： /lib/ext 目录下的 jar 包和类。java 编写。</p>
+<p>AppClassLoader 应用类加载器，加载当前 classPath 下的 jar 包和类。java 编写。</p>
+<h2 id="简述双亲委派机制"><a href="#简述双亲委派机制" class="headerlink" title="简述双亲委派机制"></a>简述双亲委派机制</h2><p>一个类加载器收到类加载请求之后，首先判断当前类是否被加载过。已经被加载的类会直接返回，如果没有被加载，首先将类加载请求转发给父类加载器，一直转发到启动类加载器，只有当父类加载器无法完成时才尝试自己加载。</p>
+<p>加载类顺序：BootstrapClassLoader-&gt;ExtensionClassLoader-&gt;AppClassLoader-&gt;CustomClassLoader </p>
+<p>检查类是否加载顺序： CustomClassLoader-&gt;AppClassLoader-&gt;ExtensionClassLoader-&gt;BootstrapClassLoader</p>
+<h2 id="双亲委派机制的优点"><a href="#双亲委派机制的优点" class="headerlink" title="双亲委派机制的优点"></a>双亲委派机制的优点</h2><ol>
+<li>避免类的重复加载。相同的类被不同的类加载器加载会产生不同的类，双亲委派保证了 java 程序的稳定运行。</li>
+<li>保证核心 API 不被修改。</li>
+</ol>
+<h2 id="如何破坏双亲委派机制"><a href="#如何破坏双亲委派机制" class="headerlink" title="如何破坏双亲委派机制"></a>如何破坏双亲委派机制</h2><p>重载 loadClass() 方法，即自定义类加载器。</p>
+<h2 id="如何构建自定义类加载器"><a href="#如何构建自定义类加载器" class="headerlink" title="如何构建自定义类加载器"></a>如何构建自定义类加载器</h2><ol>
+<li>新建自定义类继承自 java.lang.ClassLoader</li>
+<li>重写 findClass、loadClass、defineClass 方法</li>
+</ol>
+<h2 id="JVM-常见调优参数"><a href="#JVM-常见调优参数" class="headerlink" title="JVM 常见调优参数"></a>JVM 常见调优参数</h2><ul>
+<li>-Xms 初始堆大小</li>
+<li>-Xmx 最大堆大小</li>
+<li>-XX:NewSize 年轻代大小</li>
+<li>-XX:MaxNewSize 年轻代最大值</li>
+<li>-XX:PermSize 永生代初始值</li>
+<li>-XX:MaxPermSize 永生代最大值</li>
+<li>-XX:NewRatio 新生代与老年代的比例</li>
+</ul>
+<h2 id="调用-system-gc-一定会发生垃圾收集吗？为什么？"><a href="#调用-system-gc-一定会发生垃圾收集吗？为什么？" class="headerlink" title="调用 system.gc() 一定会发生垃圾收集吗？为什么？"></a>调用 system.gc() 一定会发生垃圾收集吗？为什么？</h2><p>调用 System.gc() 的时候，其实并不会马上进行垃圾回收,只会把这次 gc 请求记录下来。 需配合 System.runFinalization() 才会进行真正回收。</p>
+<h2 id="静态变量存储位置"><a href="#静态变量存储位置" class="headerlink" title="静态变量存储位置"></a>静态变量存储位置</h2><p>在 1.8 以前，静态成员变量存在方法区，在 1.8 后，由于 JDK8 取消永生代，静态变量存储到了堆中。</p>
+<h2 id="内存溢出和内存泄漏"><a href="#内存溢出和内存泄漏" class="headerlink" title="内存溢出和内存泄漏"></a>内存溢出和内存泄漏</h2><p>内存溢出：程序在申请内存时，此时已用内存过多，没有足够的剩余内存空间供其使用。</p>
+<p>内存泄漏：程序在申请内存后，不能完全释放已申请的内存空间。</p>
+<h2 id="垃圾收集器种类"><a href="#垃圾收集器种类" class="headerlink" title="垃圾收集器种类"></a>垃圾收集器种类</h2><p>串行收集器:Serial,Serial Old </p>
+<p>并行收集器:Parallel Scavenge,Parallel Old </p>
+<p>并发收集器:CMS,G1</p>
+<h2 id="简述字符串常量池"><a href="#简述字符串常量池" class="headerlink" title="简述字符串常量池"></a>简述字符串常量池</h2><p>JVM 为了提升字符串的效率，提出了字符串常量池，可以简单理解为为字符串开辟了一个缓存空间。 在新建 String 类型数据时，首先判断字符串常量池是否包含该字符串。如果包含直接返回字符串常量池数据实例。 如果不包含，则实例化该字符串，并放入字符串常量池中。</p>
+<h2 id="为什么需要分代收集算法"><a href="#为什么需要分代收集算法" class="headerlink" title="为什么需要分代收集算法"></a>为什么需要分代收集算法</h2><p>对于大部分对象，存活时间极短，而只有少部分对象存活时间较长。</p>
+<p>对于存活时间短的对象，可以采用标记复制算法，加快垃圾收集效率。如果采用标记整理或标记清除，代价太大，适用性不高</p>
+<p>对于存活时间长的数据，采用标记整理或标记清除效率更高。</p>
+<p>对于这两种不同存活时间的对象，采用不同的垃圾收集算法，可以提高整体的运行效率。</p>
+
+        </div>
+
+        
+
+        
+            <ul class="post-tags-box">
+                
+                    <li class="tag-item">
+                        <a href="/tags/Java/">#Java</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/JVM/">#JVM</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%85%AB%E8%82%A1%E6%96%87/">#八股文</a>&nbsp;
+                    </li>
+                
+                    <li class="tag-item">
+                        <a href="/tags/%E5%AD%A6%E4%B9%A0%E8%AE%B0%E5%BD%95/">#学习记录</a>&nbsp;
+                    </li>
+                
+            </ul>
+        
+
+        
+            <div class="article-nav">
+                
+                    <div class="article-prev">
+                        <a class="prev"
+                           rel="prev"
+                           href="/2022/03/24/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"
+                        >
+                            <span class="left arrow-icon flex-center">
+                              <i class="fas fa-chevron-left"></i>
+                            </span>
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">计算机网络知识总结</span>
+                                <span class="post-nav-item">上一篇</span>
+                            </span>
+                        </a>
+                    </div>
+                
+                
+                    <div class="article-next">
+                        <a class="next"
+                           rel="next"
+                           href="/2022/03/24/Java-%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/"
+                        >
+                            <span class="title flex-center">
+                                <span class="post-nav-title-item">Java 多线程知识总结</span>
+                                <span class="post-nav-item">下一篇</span>
+                            </span>
+                            <span class="right arrow-icon flex-center">
+                              <i class="fas fa-chevron-right"></i>
+                            </span>
+                        </a>
+                    </div>
+                
+            </div>
+        
+
+        
+            <div class="comment-container">
+                <div class="comments-container">
+    <div id="comment-anchor"></div>
+    <div class="comment-area-title">
+        <i class="fas fa-comments">&nbsp;评论</i>
+    </div>
+    
+
+        
+            
+    <div class="valine-container">
+        <script data-pjax
+                src="//cdn.jsdelivr.net/npm/valine@latest/dist/Valine.min.js"></script>
+        <div id="vcomments"></div>
+        <script data-pjax>
+            function loadValine() {
+                new Valine({
+                    el: '#vcomments',
+                    appId: 'R39xnzpcJgvirTriApOIr2Ns-gzGzoHsz',
+                    appKey: 'W7WqkqL3lT9XNLmMWXxD02tU',
+                    meta: ['nick', 'mail', 'link'],
+                    avatar: 'wavatar',
+                    enableQQ: true,
+                    placeholder: '',
+                    lang: 'zh-CN'.toLowerCase()
+                });
+
+                function getAuthor(language) {
+                    switch (language) {
+                        case 'en':
+                            return 'Author';
+                        case 'zh-CN':
+                            return '博主';
+                        default:
+                            return 'Master';
+                    }
+                }
+
+                // Add "Author" identify
+                const getValineDomTimer = setInterval(() => {
+                    const vcards = document.querySelectorAll('#vcomments .vcards .vcard');
+                    if (vcards.length > 0) {
+                        let author = 'shadysen';
+
+                        if (author) {
+                            for (let vcard of vcards) {
+                                const vnick_dom = vcard.querySelector('.vhead .vnick');
+                                const vnick = vnick_dom.innerHTML;
+                                if (vnick === author) {
+                                    vnick_dom.innerHTML = `${vnick} <span class="author">${getAuthor(KEEP.hexo_config.language)}</span>`
+                                }
+                            }
+                        }
+                        clearInterval(getValineDomTimer);
+                    } else {
+                        clearInterval(getValineDomTimer);
+                    }
+                }, 2000);
+            }
+
+            if ('true') {
+                const loadValineTimeout = setTimeout(() => {
+                    loadValine();
+                    clearTimeout(loadValineTimeout);
+                }, 1000);
+            } else {
+                window.addEventListener('DOMContentLoaded', loadValine);
+            }
+        </script>
+    </div>
+
+
+
+        
+    
+</div>
+
+            </div>
+        
+    </div>
+</div>
+
+
+                
+            </div>
+
+        </div>
+
+        <div class="page-main-content-bottom">
+            <footer class="footer">
+    <div class="info-container">
+        <div class="copyright-info info-item">
+            &copy;
+            
+              <span>2021</span>
+              -
+            
+            2022&nbsp;<i class="fas fa-heart icon-animate"></i>&nbsp;<a href="/">shadysen</a>
+        </div>
+        
+            <script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+            <div class="website-count info-item">
+                
+                    <span id="busuanzi_container_site_uv">
+                        访问人数&nbsp;<span id="busuanzi_value_site_uv"></span>&ensp;
+                    </span>
+                
+                
+                    <span id="busuanzi_container_site_pv">
+                        总访问量&nbsp;<span id="busuanzi_value_site_pv"></span>
+                    </span>
+                
+            </div>
+        
+        <div class="theme-info info-item">
+            由 <a target="_blank" href="https://hexo.io">Hexo</a> 驱动&nbsp;|&nbsp;主题&nbsp;<a class="theme-version" target="_blank" href="https://github.com/XPoet/hexo-theme-keep">Keep v3.4.5</a>
+        </div>
+        
+        
+    </div>
+</footer>
+
+        </div>
+    </div>
+
+    
+        <div class="post-tools">
+            <div class="post-tools-container">
+    <ul class="tools-list">
+        <!-- TOC aside toggle -->
+        
+            <li class="tools-item page-aside-toggle">
+                <i class="fas fa-outdent"></i>
+            </li>
+        
+
+        <!-- go comment -->
+        
+            <li class="go-comment">
+                <i class="fas fa-comment"></i>
+            </li>
+        
+    </ul>
+</div>
+
+        </div>
+    
+
+    <div class="right-bottom-side-tools">
+        <div class="side-tools-container">
+    <ul class="side-tools-list">
+        <li class="tools-item tool-font-adjust-plus flex-center">
+            <i class="fas fa-search-plus"></i>
+        </li>
+
+        <li class="tools-item tool-font-adjust-minus flex-center">
+            <i class="fas fa-search-minus"></i>
+        </li>
+
+        <li class="tools-item tool-expand-width flex-center">
+            <i class="fas fa-arrows-alt-h"></i>
+        </li>
+
+        <li class="tools-item tool-dark-light-toggle flex-center">
+            <i class="fas fa-moon"></i>
+        </li>
+
+        <!-- rss -->
+        
+            <li class="tools-item rss flex-center">
+                <a class="flex-center"
+                   href="/atom.xml"
+                   target="_blank"
+                >
+                    <i class="fas fa-rss"></i>
+                </a>
+            </li>
+        
+
+        
+            <li class="tools-item tool-scroll-to-top flex-center">
+                <i class="fas fa-arrow-up"></i>
+            </li>
+        
+
+        <li class="tools-item tool-scroll-to-bottom flex-center">
+            <i class="fas fa-arrow-down"></i>
+        </li>
+    </ul>
+
+    <ul class="exposed-tools-list">
+        <li class="tools-item tool-toggle-show flex-center">
+            <i class="fas fa-cog fa-spin"></i>
+        </li>
+        
+    </ul>
+</div>
+
+    </div>
+
+    
+        <aside class="page-aside">
+            <div class="post-toc-wrap">
+    <div class="post-toc">
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-JVM-%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B"><span class="nav-text">简述 JVM 内存模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%A8%8B%E5%BA%8F%E8%AE%A1%E6%95%B0%E5%99%A8"><span class="nav-text">简述程序计数器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%99%9A%E6%8B%9F%E6%9C%BA%E6%A0%88"><span class="nav-text">简述虚拟机栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E6%9C%AC%E5%9C%B0%E6%96%B9%E6%B3%95%E6%A0%88"><span class="nav-text">简述本地方法栈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-JVM-%E4%B8%AD%E7%9A%84%E5%A0%86"><span class="nav-text">简述 JVM 中的堆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E6%96%B9%E6%B3%95%E5%8C%BA"><span class="nav-text">简述方法区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="nav-text">简述运行时常量池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E7%9B%B4%E6%8E%A5%E5%86%85%E5%AD%98"><span class="nav-text">简述直接内存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Java-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-text">简述 Java 创建对象的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-JVM-%E7%BB%99%E5%AF%B9%E8%B1%A1%E5%88%86%E9%85%8D%E5%86%85%E5%AD%98%E7%9A%84%E7%AD%96%E7%95%A5"><span class="nav-text">简述 JVM 给对象分配内存的策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java-%E5%AF%B9%E8%B1%A1%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E6%98%AF%E5%A6%82%E4%BD%95%E4%BF%9D%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84"><span class="nav-text">Java 对象内存分配是如何保证线程安全的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80"><span class="nav-text">简述对象的内存布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E5%88%A4%E6%96%AD%E5%AF%B9%E8%B1%A1%E6%98%AF%E5%90%A6%E6%98%AF%E5%9E%83%E5%9C%BE"><span class="nav-text">如何判断对象是否是垃圾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Java-%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B"><span class="nav-text">简述 Java 的引用类型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E6%A0%87%E8%AE%B0%E6%B8%85%E9%99%A4%E7%AE%97%E6%B3%95%E3%80%81%E6%A0%87%E8%AE%B0%E6%95%B4%E7%90%86%E7%AE%97%E6%B3%95%E5%92%8C%E6%A0%87%E8%AE%B0%E5%A4%8D%E5%88%B6%E7%AE%97%E6%B3%95"><span class="nav-text">简述标记清除算法、标记整理算法和标记复制算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-text">简述分代收集算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Serial-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">简述 Serial 垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-ParNew-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">简述 ParNew 垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Parallel-Scavenge-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">简述 Parallel Scavenge 垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-CMS-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">简述 CMS 垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-G1-%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8"><span class="nav-text">简述 G1 垃圾收集器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Minor-GC"><span class="nav-text">简述 Minor GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-Full-GC"><span class="nav-text">简述 Full GC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D%E7%AD%96%E7%95%A5"><span class="nav-text">常见内存分配策略</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-JVM-%E7%B1%BB%E5%8A%A0%E8%BD%BD%E8%BF%87%E7%A8%8B"><span class="nav-text">简述 JVM 类加载过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0-JVM-%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="nav-text">简述 JVM 中的类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="nav-text">简述双亲委派机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6%E7%9A%84%E4%BC%98%E7%82%B9"><span class="nav-text">双亲委派机制的优点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E7%A0%B4%E5%9D%8F%E5%8F%8C%E4%BA%B2%E5%A7%94%E6%B4%BE%E6%9C%BA%E5%88%B6"><span class="nav-text">如何破坏双亲委派机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E6%9E%84%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E7%B1%BB%E5%8A%A0%E8%BD%BD%E5%99%A8"><span class="nav-text">如何构建自定义类加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#JVM-%E5%B8%B8%E8%A7%81%E8%B0%83%E4%BC%98%E5%8F%82%E6%95%B0"><span class="nav-text">JVM 常见调优参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%B0%83%E7%94%A8-system-gc-%E4%B8%80%E5%AE%9A%E4%BC%9A%E5%8F%91%E7%94%9F%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">调用 system.gc() 一定会发生垃圾收集吗？为什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E5%AD%98%E5%82%A8%E4%BD%8D%E7%BD%AE"><span class="nav-text">静态变量存储位置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E5%AD%98%E6%BA%A2%E5%87%BA%E5%92%8C%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F"><span class="nav-text">内存溢出和内存泄漏</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9E%83%E5%9C%BE%E6%94%B6%E9%9B%86%E5%99%A8%E7%A7%8D%E7%B1%BB"><span class="nav-text">垃圾收集器种类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%80%E8%BF%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%B8%B8%E9%87%8F%E6%B1%A0"><span class="nav-text">简述字符串常量池</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E5%88%86%E4%BB%A3%E6%94%B6%E9%9B%86%E7%AE%97%E6%B3%95"><span class="nav-text">为什么需要分代收集算法</span></a></li></ol>
+    </div>
+</div>
+        </aside>
+    
+
+    <div class="image-viewer-container">
+    <img src="">
+</div>
+
+
+    
+        <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+          <span class="search-input-field-pre">
+            <i class="fas fa-keyboard"></i>
+          </span>
+            <div class="search-input-container">
+                <input autocomplete="off"
+                       autocorrect="off"
+                       autocapitalize="off"
+                       placeholder="搜索..."
+                       spellcheck="false"
+                       type="search"
+                       class="search-input"
+                >
+            </div>
+            <span class="popup-btn-close">
+                <i class="fas fa-times"></i>
+            </span>
+        </div>
+        <div id="search-result">
+            <div id="no-result">
+                <i class="fas fa-spinner fa-pulse fa-5x fa-fw"></i>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
+</main>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/utils.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/main.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/header-shrink.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/back2top.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/dark-light-toggle.js"></script>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/local-search.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/code-copy.js"></script>
+
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/lazyload.js"></script>
+
+
+<div class="post-scripts pjax">
+    
+        <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/left-side-toggle.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/anime.min.js"></script><script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/toc.js"></script>
+    
+</div>
+
+
+    <script src="//cdn.jsdelivr.net/npm/hexo-theme-keep@3.4.5/source/js/libs/pjax.min.js"></script>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        window.pjax = new Pjax({
+            selectors: [
+                'head title',
+                '.page-container',
+                '.pjax'
+            ],
+            history: true,
+            debug: false,
+            cacheBust: false,
+            timeout: 0,
+            analytics: false,
+            currentUrlFullReload: false,
+            scrollRestoration: false,
+            // scrollTo: true,
+        });
+
+        document.addEventListener('pjax:send', () => {
+            KEEP.utils.pjaxProgressBarStart();
+        });
+
+        document.addEventListener('pjax:complete', () => {
+            KEEP.utils.pjaxProgressBarEnd();
+            window.pjax.executeScripts(document.querySelectorAll('script[data-pjax], .pjax script'));
+            KEEP.refresh();
+        });
+    });
+</script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
